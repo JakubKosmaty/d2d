@@ -11,11 +11,15 @@
 
 #### Docker
 1. Clone repository 
-    ```bash
+    ```sh
     git clone https://github.com/JakubKosmaty/d2d.git
     cd d2d
     ```
-2. Run docker compose
+2. Change directory 
+    ```sh
+    cd d2d
+    ```
+3. Run docker compose
     ```bash
     docker-compose up -d
     ```
