@@ -2,11 +2,11 @@ from fastapi import APIRouter
 from fastapi import Depends
 from sqlmodel import Session
 
-from d2d.database import get_session
-from d2d.models.user import User
-from d2d.models.user import UserCreate
-from d2d.models.user import UserRead
-from d2d.routers.auth import get_password_hash
+from ..database import get_session
+from ..models.user import User
+from ..models.user import UserCreate
+from ..models.user import UserRead
+from .auth import get_password_hash
 
 
 router = APIRouter(tags=["Users"])

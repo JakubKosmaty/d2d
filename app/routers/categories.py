@@ -11,8 +11,8 @@ from ..models.category import CategoryCreate
 from ..models.category import CategoryRead
 from ..models.item import Item
 from ..models.item import ItemCreate
-from d2d.database import get_session
-from d2d.helpers import get_category_by_id
+from app.database import get_session
+from app.helpers import get_category_by_id
 
 router = APIRouter(tags=["Categories"])
 

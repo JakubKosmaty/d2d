@@ -8,4 +8,4 @@ repos:
     rev: v0.3.2
     hooks:
     - id: reorder-python-imports
-      args: [--application-directories=.:d2d]
+      args: [--application-directories=.:app]

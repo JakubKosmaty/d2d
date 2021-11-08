@@ -1,10 +1,8 @@
-FROM python:3.9.7-slim-bullseye
+FROM python:3.9
 
 WORKDIR /app
 
-COPY .env .env
-COPY requirements.txt requirements.txt
-COPY ./d2d ./d2d
+COPY . ./
 
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt

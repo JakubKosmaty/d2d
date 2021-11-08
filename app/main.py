@@ -9,7 +9,7 @@ from .routers import orders
 from .routers import users
 from .settings import Settings
 
-app = FastAPI(openapi_url=Settings.OPENAPI_URL)
+app = FastAPI(title=Settings.PROJECT_NAME, openapi_url=Settings.OPENAPI_URL)
 
 app.add_middleware(
     CORSMiddleware,

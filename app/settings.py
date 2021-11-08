@@ -6,6 +6,8 @@ load_dotenv()
 
 
 class Settings:
+    PROJECT_NAME = os.getenv("PROJECT_NAME")
+
     OPENAPI_URL = os.getenv("OPENAPI_URL")
 
     JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")

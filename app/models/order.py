@@ -39,3 +39,7 @@ class OrderHeader(OrderHeaderBase, table=True):
     user_id: Optional[int] = Field(default=None, foreign_key="user.id")
 
     item_links: List[OrderItem] = Relationship(back_populates="order_header")
+
+
+class OrderHeaderRead(OrderHeaderBase):
+    item_links: List[OrderItem]
