@@ -1,13 +1,13 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.database import create_db_and_tables
-from app.routers import auth
-from app.routers import categories
-from app.routers import items
-from app.routers import orders
-from app.routers import users
-from app.settings import settings
+from d2d.database import create_db_and_tables
+from d2d.routers import auth
+from d2d.routers import categories
+from d2d.routers import items
+from d2d.routers import orders
+from d2d.routers import users
+from d2d.settings import settings
 
 app = FastAPI(title=settings.PROJECT_NAME)
 

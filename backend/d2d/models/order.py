@@ -1,7 +1,7 @@
+from datetime import datetime
 from typing import List
 from typing import Optional
 from typing import TYPE_CHECKING
-from datetime import datetime
 
 from sqlmodel import Field
 from sqlmodel import Relationship
@@ -25,4 +25,4 @@ class Order(OrderBase, table=True):
 
 
 class OrderRead(OrderBase):
-    item_links: List["OrderItemLink"]
+    date: datetime

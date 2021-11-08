@@ -1,12 +1,12 @@
 from sqlmodel import Session
 
-from app.database import engine
-from app.models.category import Category
-from app.models.category import CategoryCreate
-from app.models.item import Item
-from app.models.user import User
-from app.models.user import UserCreate
-from app.routers.auth import get_password_hash
+from d2d.database import engine
+from d2d.models.category import Category
+from d2d.models.category import CategoryCreate
+from d2d.models.item import Item
+from d2d.models.user import User
+from d2d.models.user import UserCreate
+from d2d.routers.auth import get_password_hash
 
 
 def create_example_data():

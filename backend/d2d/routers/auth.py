@@ -11,10 +11,9 @@ from pydantic import parse_obj_as
 from sqlmodel import select
 from sqlmodel import Session
 
-from app.database import get_session
-from app.models.user import User
-from app.models.user import UserRead
-from app.settings import settings
+from d2d.database import get_session
+from d2d.models.user import User
+from d2d.settings import settings
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")

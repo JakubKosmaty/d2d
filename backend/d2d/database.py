@@ -2,7 +2,7 @@ from sqlmodel import create_engine
 from sqlmodel import Session
 from sqlmodel import SQLModel
 
-from app.settings import settings
+from d2d.settings import settings
 
 sqlite_url = f"sqlite:///{settings.DB_NAME}"
 

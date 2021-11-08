@@ -5,7 +5,7 @@ repos:
     - id: black
       args: [--safe]
   - repo: https://github.com/asottile/reorder_python_imports
-    rev: v0.3.2
+    rev: v2.6.0
     hooks:
     - id: reorder-python-imports
-      args: [--application-directories=.:app]
+      args: [--application-directories=.:d2d, --py37-plus, --unclassifiable-application-module=d2d]
