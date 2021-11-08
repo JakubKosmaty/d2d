@@ -1,15 +1,15 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .database import create_db_and_tables
-from .routers import auth
-from .routers import categories
-from .routers import items
-from .routers import orders
-from .routers import users
-from .settings import Settings
+from app.database import create_db_and_tables
+from app.routers import auth
+from app.routers import categories
+from app.routers import items
+from app.routers import orders
+from app.routers import users
+from app.settings import settings
 
-app = FastAPI(title=Settings.PROJECT_NAME, openapi_url=Settings.OPENAPI_URL)
+app = FastAPI(title=settings.PROJECT_NAME)
 
 app.add_middleware(
     CORSMiddleware,

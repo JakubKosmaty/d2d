@@ -8,7 +8,7 @@ from sqlmodel import SQLModel
 
 if TYPE_CHECKING:
     from .category import Category
-    from .order import OrderItem
+    from .order_item_link import OrderItemLink
 
 
 class ItemBase(SQLModel):
@@ -17,11 +17,13 @@ class ItemBase(SQLModel):
 
 
 class ItemCreate(ItemBase):
-    pass
-
-
-class ItemEdit(ItemBase):
     category_id: int
+
+
+class ItemUpdate(SQLModel):
+    name: Optional[str] = None
+    price: Optional[float] = None
+    category_id: Optional[int] = None
 
 
 class Item(ItemBase, table=True):
@@ -30,4 +32,4 @@ class Item(ItemBase, table=True):
     category_id: Optional[int] = Field(default=None, foreign_key="category.id")
     category: Optional["Category"] = Relationship(back_populates="items")
 
-    order_header_links: List["OrderItem"] = Relationship(back_populates="item")
+    order_links: List["OrderItemLink"] = Relationship(back_populates="item")

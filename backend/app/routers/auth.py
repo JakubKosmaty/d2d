@@ -14,7 +14,7 @@ from sqlmodel import Session
 from app.database import get_session
 from app.models.user import User
 from app.models.user import UserRead
-from app.settings import Settings
+from app.settings import settings
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
@@ -43,7 +43,7 @@ def get_current_user(token: str = Depends(oauth2_scheme)) -> User:
     )
     try:
         payload = jwt.decode(
-            token, Settings.JWT_SECRET_KEY, algorithms=[Settings.JWT_ALGORITHM]
+            token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM]
         )
         user: User = parse_obj_as(User, payload)
     except jwt.ExpiredSignatureError:
@@ -67,7 +67,7 @@ def authenticate_user(session: Session, username: str, password: str):
 
 def create_access_token(user: User) -> Token:
     token = jwt.encode(
-        user.dict(), Settings.JWT_SECRET_KEY, algorithm=Settings.JWT_ALGORITHM
+        user.dict(), settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM
     )
     token_type = "bearer"
     return Token(access_token=token, token_type=token_type)

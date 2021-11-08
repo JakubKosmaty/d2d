@@ -6,13 +6,13 @@ from fastapi import Depends
 from sqlmodel import select
 from sqlmodel import Session
 
-from ..database import get_session
-from ..models.item import Item
-from ..models.order import OrderHeader
-from ..models.order import OrderHeaderRead
-from ..models.order import OrderItem
-from ..models.user import User
-from .auth import get_current_user
+from app.database import get_session
+from app.models.item import Item
+from app.models.order import OrderHeader
+from app.models.order import OrderHeaderRead
+from app.models.order import OrderItem
+from app.models.user import User
+from app.auth import get_current_user
 
 router = APIRouter(tags=["Orders"])
 
@@ -24,9 +24,7 @@ def create_order(
     user: User = Depends(get_current_user),
     items_id: List[int],
 ):
-    order_header = OrderHeader(
-        date=datetime.today().strftime("%Y-%m-%d-%H:%M:%S"), user_id=user.id
-    )
+    order_header = OrderHeader(date=datetime.today(), user_id=user.id)
 
     for item_id in items_id:
         db_item = session.get(Item, item_id)

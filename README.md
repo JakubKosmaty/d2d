@@ -1,4 +1,4 @@
-## Door-To-Door App
+## Dinner-to-Door App
 
 ### Built with
 

@@ -2,11 +2,11 @@ from fastapi import APIRouter
 from fastapi import Depends
 from sqlmodel import Session
 
-from ..database import get_session
-from ..models.user import User
-from ..models.user import UserCreate
-from ..models.user import UserRead
-from .auth import get_password_hash
+from app.database import get_session
+from app.models.user import User
+from app.models.user import UserCreate
+from app.models.user import UserRead
+from app.auth import get_password_hash
 
 
 router = APIRouter(tags=["Users"])

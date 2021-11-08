@@ -1,12 +1,12 @@
 from sqlmodel import Session
 
-from .database import engine
-from .models.category import Category
-from .models.category import CategoryCreate
-from .models.item import Item
-from .models.user import User
-from .models.user import UserCreate
-from .routers.auth import get_password_hash
+from app.database import engine
+from app.models.category import Category
+from app.models.category import CategoryCreate
+from app.models.item import Item
+from app.models.user import User
+from app.models.user import UserCreate
+from app.routers.auth import get_password_hash
 
 
 def create_example_data():
