@@ -1,24 +1,25 @@
-from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-
-from sqlmodel import Session, select
-
+import jwt
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi import HTTPException
+from fastapi import status
+from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import OAuth2PasswordRequestForm
 from passlib.context import CryptContext
-
-from pydantic import BaseModel, parse_obj_as
+from pydantic import BaseModel
+from pydantic import parse_obj_as
+from sqlmodel import select
+from sqlmodel import Session
 
 from d2d.database import get_session
-from d2d.models import UserRead, User
+from d2d.models.user import User
+from d2d.models.user import UserRead
 from d2d.settings import Settings
-
-import jwt
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-router = APIRouter(
-    tags=['Auth']
-)
+router = APIRouter(tags=["Auth"])
 
 
 class Token(BaseModel):
@@ -41,7 +42,9 @@ def get_current_user(token: str = Depends(oauth2_scheme)) -> User:
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload = jwt.decode(token, Settings.JWT_SECRET_KEY, algorithms=[Settings.JWT_ALGORITHM])
+        payload = jwt.decode(
+            token, Settings.JWT_SECRET_KEY, algorithms=[Settings.JWT_ALGORITHM]
+        )
         user: User = parse_obj_as(User, payload)
     except jwt.ExpiredSignatureError:
         raise credentials_exception
@@ -63,13 +66,19 @@ def authenticate_user(session: Session, username: str, password: str):
 
 
 def create_access_token(user: User) -> Token:
-    token = jwt.encode(user.dict(), Settings.JWT_SECRET_KEY, algorithm=Settings.JWT_ALGORITHM)
-    token_type = 'bearer'
+    token = jwt.encode(
+        user.dict(), Settings.JWT_SECRET_KEY, algorithm=Settings.JWT_ALGORITHM
+    )
+    token_type = "bearer"
     return Token(access_token=token, token_type=token_type)
 
 
 @router.post("/token", response_model=Token)
-async def generate_token(*, session: Session = Depends(get_session), form_data: OAuth2PasswordRequestForm = Depends()):
+async def generate_token(
+    *,
+    session: Session = Depends(get_session),
+    form_data: OAuth2PasswordRequestForm = Depends()
+):
     user = authenticate_user(session, form_data.username, form_data.password)
     if not user:
         raise HTTPException(
@@ -78,4 +87,3 @@ async def generate_token(*, session: Session = Depends(get_session), form_data: 
             headers={"WWW-Authenticate": "Bearer"},
         )
     return create_access_token(user)
-

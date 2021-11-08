@@ -1,16 +1,20 @@
-from fastapi import APIRouter, Depends, HTTPException, status
-
-from sqlmodel import Session, select
 from typing import List
 
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi import status
+from sqlmodel import select
+from sqlmodel import Session
+
+from ..models.category import Category
+from ..models.category import CategoryCreate
+from ..models.category import CategoryRead
+from ..models.item import Item
+from ..models.item import ItemCreate
 from d2d.database import get_session
 from d2d.helpers import get_category_by_id
-from d2d.models import CategoryRead, Category, User, CategoryCreate, Item, ItemCreate
-from d2d.routers.auth import get_current_user
 
-router = APIRouter(
-    tags=['Categories']
-)
+router = APIRouter(tags=["Categories"])
 
 
 @router.get("/categories/", response_model=List[CategoryRead])
@@ -20,7 +24,9 @@ def get_categories(*, session: Session = Depends(get_session)):
 
 
 @router.post("/categories/", response_model=CategoryRead)
-def create_category(*, session: Session = Depends(get_session), category: CategoryCreate):
+def create_category(
+    *, session: Session = Depends(get_session), category: CategoryCreate
+):
     db_category = Category.from_orm(category)
     session.add(db_category)
     session.commit()
@@ -29,7 +35,12 @@ def create_category(*, session: Session = Depends(get_session), category: Catego
 
 
 @router.put("/categories/{category_id}/", response_model=CategoryRead)
-def edit_category(*, session: Session = Depends(get_session), category_id: int, category: CategoryCreate):
+def edit_category(
+    *,
+    session: Session = Depends(get_session),
+    category_id: int,
+    category: CategoryCreate
+):
     category_db = get_category_by_id(session, category_id)
     category_db.name = category.name
     session.add(category_db)
@@ -53,7 +64,9 @@ def get_items(*, session: Session = Depends(get_session), category_id: int):
 
 
 @router.post("/categories/{category_id}/items/", response_model=Item)
-def create_item(*, session: Session = Depends(get_session), category_id: int, item: ItemCreate):
+def create_item(
+    *, session: Session = Depends(get_session), category_id: int, item: ItemCreate
+):
     category = get_category_by_id(session, category_id)
     db_item = Item(name=item.name, price=item.price, category_id=category.id)
     session.add(db_item)

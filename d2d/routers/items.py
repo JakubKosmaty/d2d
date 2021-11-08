@@ -1,18 +1,15 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi import status
+from sqlmodel import Session
 
-from sqlmodel import Session, select
-from typing import List
-
-
+from ..models.item import Item
+from ..models.item import ItemEdit
 from d2d.database import get_session
-from d2d.helpers import get_category_by_id, get_item_by_id
-from d2d.models import CategoryRead, Category, User, CategoryCreate, Item, ItemCreate, ItemEdit
-from d2d.routers.auth import get_current_user
+from d2d.helpers import get_category_by_id
+from d2d.helpers import get_item_by_id
 
-
-router = APIRouter(
-    tags=['Items']
-)
+router = APIRouter(tags=["Items"])
 
 
 @router.put("/items/{item_id}/", response_model=Item)

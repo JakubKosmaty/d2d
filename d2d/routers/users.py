@@ -1,15 +1,15 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
+from fastapi import Depends
 from sqlmodel import Session
 
-from d2d.models import UserRead, UserCreate, User
 from d2d.database import get_session
-
+from d2d.models.user import User
+from d2d.models.user import UserCreate
+from d2d.models.user import UserRead
 from d2d.routers.auth import get_password_hash
 
 
-router = APIRouter(
-    tags=['Users']
-)
+router = APIRouter(tags=["Users"])
 
 
 @router.post("/users/", response_model=UserRead)

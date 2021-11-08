@@ -1,8 +1,9 @@
-from fastapi import HTTPException, status
-
+from fastapi import HTTPException
+from fastapi import status
 from sqlmodel import Session
 
-from d2d.models import Category, Item
+from .models.category import Category
+from .models.item import Item
 
 
 def get_category_by_id(session: Session, category_id: int) -> Category:
