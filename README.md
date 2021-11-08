@@ -13,7 +13,6 @@
 1. Clone repository 
     ```sh
     git clone https://github.com/JakubKosmaty/d2d.git
-    cd d2d
     ```
 2. Change directory 
     ```sh
