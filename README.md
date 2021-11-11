@@ -9,7 +9,7 @@
 
 ### Installation
 
-#### Docker
+#### With Docker
 1. Clone repository 
     ```sh
     git clone https://github.com/JakubKosmaty/d2d.git
@@ -22,3 +22,6 @@
     ```bash
     docker-compose up -d
     ```
+4. Open browser
+	- Frontend - http://localhost
+	- Swagger Api - http://localhost:9000/docs  

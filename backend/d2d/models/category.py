@@ -24,6 +24,7 @@ class CategoryUpdate(CategoryBase):
 
 class CategoryRead(CategoryBase):
     id: int
+    items: List
 
 
 class Category(CategoryBase, table=True):
