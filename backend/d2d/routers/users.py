@@ -6,7 +6,7 @@ from d2d.database import get_session
 from d2d.models.user import User
 from d2d.models.user import UserCreate
 from d2d.models.user import UserRead
-from d2d.routers.auth import get_password_hash
+from d2d.routers.auth import get_password_hash, get_current_user
 
 router = APIRouter(tags=["Users"])
 
@@ -19,3 +19,11 @@ def create_user(*, session: Session = Depends(get_session), user: UserCreate):
     session.commit()
     session.refresh(db_user)
     return db_user
+
+
+@router.get("/users/me", response_model=UserRead)
+def get_user(
+        *,
+        session: Session = Depends(get_session),
+        user: User = Depends(get_current_user)):
+    return user

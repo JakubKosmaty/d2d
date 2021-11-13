@@ -1,30 +1,10 @@
 <template>
-  <q-card class="my-card">
-    <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
-    <q-card-section>
-      <q-btn
-        fab
-        color="primary"
-        icon="place"
-        class="absolute"
-        style="top: 0; right: 12px; transform: translateY(-50%)"
-      />
+  <q-card>
+    <q-img :src="itemInfo.image_url" width="100%" height="250px"/>
 
+    <q-card-section>
       <div class="row no-wrap items-center">
         <div class="col text-h6 ellipsis">{{ itemInfo.name }}</div>
-        <div
-          class="
-            col-auto
-            text-grey text-caption
-            q-pt-md
-            row
-            no-wrap
-            items-center
-          "
-        >
-          <q-icon name="place" />
-          250 ft
-        </div>
       </div>
     </q-card-section>
 
@@ -37,20 +17,36 @@
 
     <q-separator />
 
-    <q-card-actions>
-      <q-btn flat round icon="event" />
-      <q-btn flat color="primary"> Reserve </q-btn>
+    <q-card-actions align="right">
+      <q-btn flat round color="red" icon="remove" @click="removeItemFromCart(itemInfo)" />
+      <q-btn flat round color="teal" icon="add" @click="addItemToCart(itemInfo)"/>
     </q-card-actions>
   </q-card>
 </template>
 
 <script>
+import {useStore} from "vuex";
+import {computed} from "vue";
+
 export default {
   name: 'CardMenuItem',
   props: ['itemInfo'],
 
-  setup(props) {
-    console.log(props);
+  setup() {
+    const store = useStore()
+
+    const addItemToCart = (item) => {
+      store.commit('cart/addItemToCart', item)
+    }
+
+    const removeItemFromCart = (item) => {
+      store.commit('cart/removeItemFromCart', item)
+    }
+
+    return {
+      addItemToCart,
+      removeItemFromCart
+    }
   },
 };
 </script>

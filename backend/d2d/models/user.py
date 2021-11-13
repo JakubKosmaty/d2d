@@ -5,13 +5,12 @@ from sqlmodel import SQLModel
 
 
 class UserBase(SQLModel):
-    username: str
-    password: str
+    name: str
     email: str
 
 
 class UserCreate(UserBase):
-    pass
+    password: str
 
 
 class UserRead(UserBase):
@@ -20,3 +19,4 @@ class UserRead(UserBase):
 
 class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
+    password: str

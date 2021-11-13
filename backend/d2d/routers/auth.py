@@ -12,7 +12,7 @@ from sqlmodel import select
 from sqlmodel import Session
 
 from d2d.database import get_session
-from d2d.models.user import User
+from d2d.models.user import User, UserRead
 from d2d.settings import settings
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -53,8 +53,8 @@ def get_current_user(token: str = Depends(oauth2_scheme)) -> User:
     return user
 
 
-def authenticate_user(session: Session, username: str, password: str):
-    user = session.exec(select(User).where(User.username == username)).first()
+def authenticate_user(session: Session, email: str, password: str):
+    user = session.exec(select(User).where(User.email == email)).first()
     if not user:
         return None
 
@@ -69,14 +69,15 @@ def create_access_token(user: User) -> Token:
         user.dict(), settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM
     )
     token_type = "bearer"
-    return Token(access_token=token, token_type=token_type)
+    # return Token(access_token=token, token_type=token_type)
+    return token
 
 
-@router.post("/token", response_model=Token)
+@router.post("/token")
 async def generate_token(
-    *,
-    session: Session = Depends(get_session),
-    form_data: OAuth2PasswordRequestForm = Depends()
+        *,
+        session: Session = Depends(get_session),
+        form_data: OAuth2PasswordRequestForm = Depends()
 ):
     user = authenticate_user(session, form_data.username, form_data.password)
     if not user:
@@ -85,4 +86,6 @@ async def generate_token(
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    return create_access_token(user)
+    access_token = create_access_token(user)
+    user_read = parse_obj_as(UserRead, user)
+    return {"user": user_read, "access_token": access_token}

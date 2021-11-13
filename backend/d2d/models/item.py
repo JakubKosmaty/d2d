@@ -14,6 +14,7 @@ if TYPE_CHECKING:
 class ItemBase(SQLModel):
     name: str
     price: float
+    image_url: str
 
 
 class ItemCreate(ItemBase):
@@ -24,6 +25,7 @@ class ItemUpdate(SQLModel):
     name: Optional[str] = None
     price: Optional[float] = None
     category_id: Optional[int] = None
+    image_url: Optional[str] = None
 
 
 class Item(ItemBase, table=True):
