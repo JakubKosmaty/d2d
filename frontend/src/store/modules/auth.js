@@ -5,8 +5,6 @@ const state = userLocal
   ? {status: {loggedIn: true}, user: userLocal}
   : {status: {loggedIn: false}, user: null};
 
-console.log(state)
-
 const getters = {}
 
 const actions = {

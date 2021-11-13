@@ -26,7 +26,7 @@
       <NavMenuItems/>
     </q-drawer>
 
-    <div v-if="cart.length > 0">
+    <div v-if="currentRoute !== 'checkout' && cart.length > 0">
       <q-drawer v-model="rightDrawerOpen" bordered show-if-above side="right">
           <CartList :cart="cart" />
       </q-drawer>
@@ -45,6 +45,7 @@ import {computed, ref} from "vue";
 import {useQuasar} from "quasar";
 import {useStore} from "vuex";
 import CartList from "@/components/CartList";
+import {useRouter} from "vue-router";
 
 export default {
   name: "MainLayout",
@@ -56,17 +57,18 @@ export default {
 
   setup() {
     const store = useStore()
+    const router = useRouter()
     const leftDrawerOpen = ref(true);
     const third = ref(false);
 
-    const cart = computed(() => {
-      return store.state.cart.cartItems
-    })
+    const cart = computed(() => store.state.cart.cartItems)
+    const currentRoute = computed(() => router.currentRoute.value.name)
 
     const $q = useQuasar()
 
     return {
       cart,
+      currentRoute,
       third,
       leftDrawerOpen,
       toggleLeftDrawer() {

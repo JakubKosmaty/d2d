@@ -41,7 +41,7 @@
                       <div
                           v-for="itemInfo in category.items"
                           :key="itemInfo.id"
-                          class="col-4 q-pa-md"
+                          class="col-md-6 col-lg-4 col-sm-12 q-pa-md"
                       >
                         <CardMenuItem :itemInfo="itemInfo"/>
 
@@ -73,7 +73,7 @@ export default {
     store.dispatch('categories/getAllCategories')
     return {
       tab: ref(1),
-      splitterModel: ref(10),
+      splitterModel: ref(12),
       categories,
     }
   },

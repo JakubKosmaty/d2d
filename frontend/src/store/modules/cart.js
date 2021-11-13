@@ -4,9 +4,7 @@ const state = {
 
 const getters = {}
 
-const actions = {
-
-}
+const actions = {}
 
 const getItemIndex = (cart, inputItem) => {
   return cart.findIndex(function (item, index) {

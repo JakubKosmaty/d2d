@@ -1,6 +1,4 @@
 <template>
-
-
   <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
     <div class="absolute-bottom bg-transparent">
       <div v-if="user">
@@ -10,7 +8,6 @@
       </div>
     </div>
   </q-img>
-
 
   <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
     <q-list class="text-grey-8">
@@ -80,9 +77,7 @@
 
     </q-list>
   </q-scroll-area>
-
 </template>
-
 
 <script>
 import {useStore} from "vuex"
@@ -94,9 +89,7 @@ export default {
   setup() {
     const store = useStore()
     const router = useRouter()
-    const user = computed(() => {
-      return store.state.auth.user
-    })
+    const user = computed(() => store.state.auth.user)
 
     const logout = () => {
       store.dispatch('auth/logout')
@@ -113,5 +106,4 @@ export default {
   color: white;
   background: #F2C037;
 }
-
 </style>

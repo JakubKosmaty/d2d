@@ -1,9 +1,7 @@
-import axios from 'axios';
-import User from '../models/user'
+import axios from 'axios'
 
 class AuthService {
   login(user) {
-
     const data = new URLSearchParams({
       'username': user.email,
       'password': user.password

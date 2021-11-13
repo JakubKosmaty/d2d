@@ -26,22 +26,15 @@
 
 <script>
 import {useStore} from "vuex";
-import {computed} from "vue";
 
 export default {
   name: 'CardMenuItem',
   props: ['itemInfo'],
-
   setup() {
     const store = useStore()
 
-    const addItemToCart = (item) => {
-      store.commit('cart/addItemToCart', item)
-    }
-
-    const removeItemFromCart = (item) => {
-      store.commit('cart/removeItemFromCart', item)
-    }
+    const addItemToCart = (item) => store.commit('cart/addItemToCart', item)
+    const removeItemFromCart = (item) => store.commit('cart/removeItemFromCart', item)
 
     return {
       addItemToCart,

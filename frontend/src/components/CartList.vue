@@ -1,6 +1,5 @@
 <template>
   <q-list>
-
     <q-item-label header class="text-h5">Shopping Cart</q-item-label>
 
     <q-separator />
@@ -12,7 +11,7 @@
       </q-item-section>
 
       <q-item-section side top>
-        <q-badge :label="(item.price * item.quantity).toFixed(2) + ' $'" />
+        <q-badge :label="(item.price * item.quantity).toFixed(2) + '$'" />
       </q-item-section>
     </q-item>
 
@@ -24,15 +23,13 @@
       </q-item-section>
 
       <q-item-section>Checkout</q-item-section>
-
-
     </q-item>
 
   </q-list>
 </template>
 
 <script>
-import {useRouter} from "vue-router";
+import {useRouter} from "vue-router"
 
 export default {
   name: "CartList",
@@ -46,7 +43,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

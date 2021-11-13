@@ -1,5 +1,5 @@
 <template>
-  <q-page>
+  <q-page v-if="user">
     <div class="row justify-center q-pa-lg">
       <div class="col-md-4 col-xs-12">
         <q-card>
@@ -43,14 +43,11 @@ export default {
   setup() {
     const store = useStore()
     const router = useRouter()
-    const user = computed(() => {
-      return store.state.auth.user
-    })
+    const user = computed(() => store.state.auth.user)
 
     if (!user.value) {
-      router.push({name: 'home'})
+      router.push({name: 'login'})
     }
-
 
     return {user}
   },
