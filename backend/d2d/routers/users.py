@@ -1,8 +1,11 @@
+from typing import List
+
 from fastapi import APIRouter
 from fastapi import Depends
-from sqlmodel import Session
+from sqlmodel import Session, select
 
 from d2d.database import get_session
+from d2d.models.order import Order, OrderRead
 from d2d.models.user import User
 from d2d.models.user import UserCreate
 from d2d.models.user import UserRead
@@ -27,3 +30,15 @@ def get_user(
         session: Session = Depends(get_session),
         user: User = Depends(get_current_user)):
     return user
+
+
+@router.get("/users/me/orders", response_model=List[OrderRead])
+def get_current_user_orders(
+        *,
+        session: Session = Depends(get_session),
+        user: User = Depends(get_current_user)):
+
+    statement = select(Order).where(Order.user_id == user.id)
+    orders_list = session.exec(statement).all()
+
+    return orders_list

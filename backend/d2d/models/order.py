@@ -18,6 +18,8 @@ class OrderBase(SQLModel):
 class Order(OrderBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     date: datetime
+    address: str
+    phone: str
 
     user_id: Optional[int] = Field(default=None, foreign_key="user.id")
 
@@ -26,3 +28,12 @@ class Order(OrderBase, table=True):
 
 class OrderRead(OrderBase):
     date: datetime
+    address: str
+    phone: str
+    item_links: List
+
+
+class OrderCreate(OrderBase):
+    item_id: int
+    quantity: int
+

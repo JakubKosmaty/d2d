@@ -4,7 +4,7 @@
 
 * [FastAPI](https://fastapi.tiangolo.com/)
 * [SQLModel](https://sqlmodel.tiangolo.com/tutorial/delete/)
-* [Vue.js](https://vuejs.org/)
+* [Vue.js](https://v3.vuejs.org/)
 
 
 ### Installation

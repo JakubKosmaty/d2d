@@ -1,11 +1,11 @@
-import axios from 'axios'
+import axios from 'axios';
 
 class AuthService {
   login(user) {
     const data = new URLSearchParams({
       'username': user.email,
       'password': user.password
-    })
+    });
 
     return axios
       .post(process.env.VUE_APP_API_URL + '/token', data, {
@@ -20,8 +20,7 @@ class AuthService {
             name: response.data.user.name,
             email: response.data.user.email,
             access_token: response.data.access_token,
-          }
-          console.log('DEBUG ', user)
+          };
           localStorage.setItem('user', JSON.stringify(user));
 
           return user;

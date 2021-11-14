@@ -7,7 +7,7 @@
             <div class="text-h4 text-weight-medium">Register</div>
           </q-card-section>
 
-          <q-separator inset/>
+          <q-separator inset />
 
           <q-card-section>
 
@@ -17,21 +17,20 @@
             >
               <q-input v-model="name" filled prefix="Name:">
                 <template v-slot:prepend>
-                  <q-icon name="account_circle"/>
+                  <q-icon name="account_circle" />
                 </template>
               </q-input>
 
 
-              <!--              <q-input v-model="email" filled prefix="Email:" type="email">-->
-              <q-input v-model="email" filled prefix="Email:">
+              <q-input v-model="email" filled prefix="Email:" type="email">
                 <template v-slot:prepend>
-                  <q-icon name="mail"/>
+                  <q-icon name="mail" />
                 </template>
               </q-input>
 
               <q-input v-model="password" :type="isPwd ? 'password' : 'text'" filled prefix="Password:">
                 <template v-slot:prepend>
-                  <q-icon name="lock"/>
+                  <q-icon name="lock" />
                 </template>
                 <template v-slot:append>
                   <q-icon
@@ -44,7 +43,7 @@
 
               <q-input v-model="confirmPassword" :type="isPwd ? 'password' : 'text'" filled prefix="Confirm Password:">
                 <template v-slot:prepend>
-                  <q-icon name="lock"/>
+                  <q-icon name="lock" />
                 </template>
                 <template v-slot:append>
                   <q-icon
@@ -56,7 +55,7 @@
               </q-input>
 
               <div>
-                <q-btn color="primary" label="Register" type="submit"/>
+                <q-btn color="primary" label="Register" type="submit" />
               </div>
             </q-form>
           </q-card-section>
@@ -67,25 +66,25 @@
 </template>
 
 <script>
-import {ref} from 'vue'
-import {useStore} from "vuex";
-import {useRouter} from "vue-router";
+import { ref } from 'vue';
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 export default {
   name: "Register",
   setup() {
-    const name = ref(null)
-    const email = ref(null)
-    const password = ref(null)
-    const confirmPassword = ref(null)
+    const name = ref(null);
+    const email = ref(null);
+    const password = ref(null);
+    const confirmPassword = ref(null);
 
-    const isPwd = ref(true)
-    const store = useStore()
-    const router = useRouter()
+    const isPwd = ref(true);
+    const store = useStore();
+    const router = useRouter();
 
     const onSubmit = () => {
       if (password.value !== confirmPassword.value) {
-        return
+        return;
       }
 
       store.dispatch('auth/register', {
@@ -94,15 +93,15 @@ export default {
         password: password.value
       }).then(
           () => {
-            router.push({name: 'login'})
+            router.push({name: 'login'});
           },
           (error) => {
-            console.log(error)
+            console.log(error);
           }
-      )
-    }
+      );
+    };
 
-    const routeToRegister = () => router.push({name: 'register'})
+    const routeToRegister = () => router.push({name: 'register'});
 
     return {
       name,
@@ -112,7 +111,7 @@ export default {
       isPwd,
       onSubmit,
       routeToRegister
-    }
+    };
   },
 };
 </script>

@@ -12,7 +12,7 @@ from d2d.routers.auth import get_password_hash
 def create_example_data():
     with Session(engine) as session:
         user = UserCreate(
-            name='tomy', email="132", password=get_password_hash("123")
+            name='David', email="david@example.com", password=get_password_hash("123")
         )
         db_user = User.from_orm(user)
         session.add(db_user)
@@ -24,25 +24,25 @@ def create_example_data():
             db_category = Category.from_orm(category)
             session.add(db_category)
 
-        db_item = Item(name="Tortillas", price=10.2, category_id=1, image_url='https://foodhub.scene7.com/is/image/woolworthsltdprod/2006-mexican-chicken-tortillas:Desktop-1300x658')
+        db_item = Item(name="Tortillas", price=8.0, category_id=1, image_url='https://foodhub.scene7.com/is/image/woolworthsltdprod/2006-mexican-chicken-tortillas:Desktop-1300x658')
         session.add(db_item)
 
-        db_item = Item(name="Cheeseburgers", price=2.2, category_id=1, image_url='https://img.redro.pl/obrazy/two-tasty-cheeseburgers-with-american-cheese-700-212331665.jpg')
+        db_item = Item(name="Cheeseburgers", price=10.0, category_id=1, image_url='https://img.redro.pl/obrazy/two-tasty-cheeseburgers-with-american-cheese-700-212331665.jpg')
         session.add(db_item)
 
-        db_item = Item(name="Pizza", price=2.2, category_id=1, image_url='https://www.mojegotowanie.pl/media/cache/default_view/uploads/media/recipe/0002/11/pizza-pepperoni.jpeg')
+        db_item = Item(name="Pizza", price=15.5, category_id=1, image_url='https://www.mojegotowanie.pl/media/cache/default_view/uploads/media/recipe/0002/11/pizza-pepperoni.jpeg')
         session.add(db_item)
 
         db_item = Item(name="Futomaki", price=50.0, category_id=2, image_url='https://kaiseki.pl/wp-content/uploads/2019/07/kaiseki-menu-futomaki.jpg')
         session.add(db_item)
 
-        db_item = Item(name="Hosokami", price=100.0, category_id=2, image_url='https://kuchnialidla.pl/img/PL/960x540/ff45002b0c10-5879e835f6fe-Kinga_Paruzel-sushi-hosomaki-futomaki-uramaki-nigiri-1250x700.jpg')
+        db_item = Item(name="Hosokami", price=30.0, category_id=2, image_url='https://kuchnialidla.pl/img/PL/960x540/ff45002b0c10-5879e835f6fe-Kinga_Paruzel-sushi-hosomaki-futomaki-uramaki-nigiri-1250x700.jpg')
         session.add(db_item)
 
-        db_item = Item(name="Ice Cream", price=2.0, category_id=3, image_url='https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/0C9310E2-D356-4ED3-BBA0-147E7D21C67C/Derivates/E08BD85D-9D20-471A-BE8F-990ED6E2C1C3.jpg')
+        db_item = Item(name="Ice Cream", price=3.0, category_id=3, image_url='https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/0C9310E2-D356-4ED3-BBA0-147E7D21C67C/Derivates/E08BD85D-9D20-471A-BE8F-990ED6E2C1C3.jpg')
         session.add(db_item)
 
-        db_item = Item(name="Fruits", price=9.0, category_id=3, image_url='https://ellalanguage.com/blog/wp-content/uploads/2021/12/fruit_czy_fruits_blogT-740x499.jpg')
+        db_item = Item(name="Fruits", price=2.0, category_id=3, image_url='https://ellalanguage.com/blog/wp-content/uploads/2021/12/fruit_czy_fruits_blogT-740x499.jpg')
         session.add(db_item)
 
         session.commit()

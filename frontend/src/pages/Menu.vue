@@ -7,7 +7,7 @@
             <div class="text-h4 text-weight-medium">Menu</div>
           </q-card-section>
 
-          <q-separator inset/>
+          <q-separator inset />
 
           <q-card-section>
             <q-splitter v-model="splitterModel" style="height: auto">
@@ -43,7 +43,7 @@
                           :key="itemInfo.id"
                           class="col-md-6 col-lg-4 col-sm-12 q-pa-md"
                       >
-                        <CardMenuItem :itemInfo="itemInfo"/>
+                        <CardMenuItem :itemInfo="itemInfo" />
 
                       </div>
                     </div>
@@ -59,23 +59,22 @@
 </template>
 
 <script>
-import {computed, ref} from 'vue'
-import {useStore} from 'vuex'
-import CardMenuItem from '../components/CardMenuItem.vue'
+import { computed, ref } from 'vue';
+import { useStore } from 'vuex';
+import CardMenuItem from '../components/CardMenuItem.vue';
 
 export default {
   name: 'Menu',
-
   components: {CardMenuItem},
   setup() {
-    const store = useStore()
-    const categories = computed(() => store.state.categories.all)
-    store.dispatch('categories/getAllCategories')
+    const store = useStore();
+    const categories = computed(() => store.state.categories.all);
+    store.dispatch('categories/getAllCategories');
     return {
       tab: ref(1),
       splitterModel: ref(12),
       categories,
-    }
+    };
   },
 };
 </script>

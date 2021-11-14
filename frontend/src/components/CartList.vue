@@ -1,12 +1,12 @@
 <template>
   <q-list>
-    <q-item-label header class="text-h5">Shopping Cart</q-item-label>
+    <q-item-label class="text-h5" header>Shopping Cart</q-item-label>
 
     <q-separator />
 
-    <q-item v-for="item in cart" class="q-pa-md" :key="item.id">
+    <q-item v-for="item in cart" :key="item.id" class="q-pa-md">
       <q-item-section>
-        <q-item-label class="text-weight-medium" >{{ item.name }}</q-item-label>
+        <q-item-label class="text-weight-medium">{{ item.name }}</q-item-label>
         <q-item-label caption>x{{ item.quantity }}</q-item-label>
       </q-item-section>
 
@@ -17,9 +17,9 @@
 
     <q-separator />
 
-    <q-item clickable v-ripple class="q-pa-md" @click="router.push({name: 'checkout'})">
+    <q-item v-ripple class="q-pa-md" clickable @click="router.push({name: 'checkout'})">
       <q-item-section avatar>
-        <q-avatar color="teal" text-color="white" icon="shopping_cart" />
+        <q-avatar color="teal" icon="shopping_cart" text-color="white" />
       </q-item-section>
 
       <q-item-section>Checkout</q-item-section>
@@ -29,17 +29,17 @@
 </template>
 
 <script>
-import {useRouter} from "vue-router"
+import { useRouter } from "vue-router";
 
 export default {
   name: "CartList",
   props: ['cart'],
   setup() {
-    const router = useRouter()
+    const router = useRouter();
 
     return {
       router
-    }
+    };
   }
-}
+};
 </script>

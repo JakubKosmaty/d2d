@@ -2,7 +2,7 @@
   <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
     <div class="absolute-bottom bg-transparent">
       <div v-if="user">
-        <q-avatar class="q-mb-sm" color="teal" icon="person" size="45px"/>
+        <q-avatar class="q-mb-sm" color="teal" icon="person" size="45px" />
         <div class="text-weight-bold">{{ user.name }}</div>
         <div>{{ user.email }}</div>
       </div>
@@ -14,7 +14,7 @@
 
       <q-item v-ripple :to="{name: 'home'}" active-class="menu-active" clickable>
         <q-item-section avatar>
-          <q-icon name="home"/>
+          <q-icon name="home" />
         </q-item-section>
 
         <q-item-section>
@@ -24,7 +24,7 @@
 
       <q-item v-ripple :to="{name: 'menu'}" active-class="menu-active" clickable>
         <q-item-section avatar>
-          <q-icon name="lunch_dining"/>
+          <q-icon name="lunch_dining" />
         </q-item-section>
 
         <q-item-section>
@@ -35,7 +35,7 @@
       <div v-if="!user">
         <q-item v-ripple :to="{name: 'login'}" active-class="menu-active" clickable>
           <q-item-section avatar>
-            <q-icon name="login"/>
+            <q-icon name="login" />
           </q-item-section>
 
           <q-item-section>
@@ -45,7 +45,7 @@
 
         <q-item v-ripple :to="{name: 'register'}" active-class="menu-active" clickable>
           <q-item-section avatar>
-            <q-icon name="app_registration"/>
+            <q-icon name="app_registration" />
           </q-item-section>
 
           <q-item-section>
@@ -55,18 +55,18 @@
       </div>
       <div v-else>
         <q-item v-ripple :to="{name: 'profile'}" active-class="menu-active" clickable>
-        <q-item-section avatar>
-          <q-icon name="settings"/>
-        </q-item-section>
+          <q-item-section avatar>
+            <q-icon name="settings" />
+          </q-item-section>
 
-        <q-item-section>
-          <q-item-label>Profile</q-item-label>
-        </q-item-section>
+          <q-item-section>
+            <q-item-label>Profile</q-item-label>
+          </q-item-section>
         </q-item>
 
         <q-item v-ripple active-class="menu-active" clickable @click="logout">
           <q-item-section avatar>
-            <q-icon name="logout"/>
+            <q-icon name="logout" />
           </q-item-section>
 
           <q-item-section>
@@ -80,25 +80,25 @@
 </template>
 
 <script>
-import {useStore} from "vuex"
-import {computed} from "vue"
-import {useRouter} from "vue-router"
+import { useStore } from "vuex";
+import { computed } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   name: "NavMenuItems",
   setup() {
-    const store = useStore()
-    const router = useRouter()
-    const user = computed(() => store.state.auth.user)
+    const store = useStore();
+    const router = useRouter();
+    const user = computed(() => store.state.auth.user);
 
     const logout = () => {
-      store.dispatch('auth/logout')
-      router.push({name: 'home'})
-    }
+      store.dispatch('auth/logout');
+      router.push({name: 'home'});
+    };
 
-    return {user, logout}
+    return {user, logout};
   }
-}
+};
 </script>
 
 <style>

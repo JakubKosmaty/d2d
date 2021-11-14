@@ -1,18 +1,17 @@
-import AuthService from '../../services/auth-service'
+import AuthService from '../../services/auth-service';
 
 const userLocal = JSON.parse(localStorage.getItem('user'));
 const state = userLocal
   ? {status: {loggedIn: true}, user: userLocal}
   : {status: {loggedIn: false}, user: null};
 
-const getters = {}
+const getters = {};
 
 const actions = {
   login({commit}, user) {
     return AuthService.login(user).then(
       user => {
         commit('loginSuccess', user);
-        console.log(user)
         return Promise.resolve(user);
       },
       error => {
@@ -37,7 +36,7 @@ const actions = {
       }
     );
   }
-}
+};
 
 const mutations = {
   loginSuccess(state, user) {
@@ -58,7 +57,7 @@ const mutations = {
   registerFailure(state) {
     state.status.loggedIn = false;
   }
-}
+};
 
 export default {
   namespaced: true,
@@ -66,4 +65,4 @@ export default {
   getters,
   actions,
   mutations
-}
+};

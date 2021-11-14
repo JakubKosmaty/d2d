@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <q-img :src="itemInfo.image_url" width="100%" height="250px"/>
+    <q-img :src="itemInfo.image_url" height="250px" width="100%" />
 
     <q-card-section>
       <div class="row no-wrap items-center">
@@ -18,28 +18,28 @@
     <q-separator />
 
     <q-card-actions align="right">
-      <q-btn flat round color="red" icon="remove" @click="removeItemFromCart(itemInfo)" />
-      <q-btn flat round color="teal" icon="add" @click="addItemToCart(itemInfo)"/>
+      <q-btn color="red" flat icon="remove" round @click="removeItemFromCart(itemInfo)" />
+      <q-btn color="teal" flat icon="add" round @click="addItemToCart(itemInfo)" />
     </q-card-actions>
   </q-card>
 </template>
 
 <script>
-import {useStore} from "vuex";
+import { useStore } from "vuex";
 
 export default {
   name: 'CardMenuItem',
   props: ['itemInfo'],
   setup() {
-    const store = useStore()
+    const store = useStore();
 
-    const addItemToCart = (item) => store.commit('cart/addItemToCart', item)
-    const removeItemFromCart = (item) => store.commit('cart/removeItemFromCart', item)
+    const addItemToCart = (item) => store.commit('cart/addItemToCart', item);
+    const removeItemFromCart = (item) => store.commit('cart/removeItemFromCart', item);
 
     return {
       addItemToCart,
       removeItemFromCart
-    }
+    };
   },
 };
 </script>
