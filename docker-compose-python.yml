@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: ./backend
+    image: d2d-api
+    command: ["uvicorn", "d2d.main:app", "--host", "0.0.0.0", "--port", "9000"]
+    ports:
+      - "9000:9000"
+    environment:
+      - PYTHONUNBUFFERED=1
+  frontend:
+    build: ./frontend
+    image: d2d-frontend
+    command: ["http-server", "dist", "--port", "80"]
+    ports:
+      - "80:80"

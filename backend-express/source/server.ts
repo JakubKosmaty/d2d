@@ -1,11 +1,21 @@
+import 'reflect-metadata';
+
 import http from 'http';
 import express from 'express';
 import logging from './config/logging';
 import config from './config/config';
 import userRoutes from './routes/user';
+import categoryRoutes from './routes/category';
+import { createConnection } from 'typeorm';
+import createExampleData from './exampleData';
 
 const NAMESPACE = 'Server';
 const app = express();
+createConnection();
+
+// setTimeout(() => {
+//     createExampleData();
+// }, 1000);
 
 app.use((req, res, next) => {
     logging.info(NAMESPACE, `METHOD: [${req.method}] - URL: [${req.url}] - IP: [${req.socket.remoteAddress}]`);
@@ -33,6 +43,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/users', userRoutes);
+app.use('/categories', categoryRoutes);
 
 app.use((req, res, next) => res.status(404).json({ message: 'Not found' }));
 
