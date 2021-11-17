@@ -7,5 +7,5 @@
     "database": "d2d_db",
     "synchronize": true,
     "logging": false,
-    "entities": ["source/entity/**/*.ts"]
+    "entities": ["src/entity/**/*.ts"]
 }

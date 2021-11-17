@@ -1,6 +1,6 @@
 services:
   backend:
-    build: ./backend
+    build: ./backend-fastapi
     image: d2d-api
     command: ["uvicorn", "d2d.main:app", "--host", "0.0.0.0", "--port", "9000"]
     ports:

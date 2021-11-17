@@ -1,4 +1,16 @@
 services:
+  frontend:
+    build: ./frontend
+    image: d2d-frontend
+    command: ["http-server", "dist", "--port", "80"]
+    ports:
+      - "80:80"
+  backend:
+    build: ./backend-express
+    image: d2d-api
+    command: ["node", "./build/index.js"]
+    ports:
+      - "9000:9000"
   db:
     image: mysql:latest
     ports:
@@ -7,5 +19,5 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: d2d_db
     volumes:
-      - $HOME/Desktop/mysql-data:/var/lib/mysql
+      - ./backend-express/mysql_data:/var/lib/mysql
 

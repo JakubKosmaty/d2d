@@ -12,7 +12,7 @@ from d2d.routers.auth import get_password_hash
 def create_example_data():
     with Session(engine) as session:
         user = UserCreate(
-            name='David', email="david@example.com", password=get_password_hash("123")
+            name='David', email="test", password=get_password_hash("123")
         )
         db_user = User.from_orm(user)
         session.add(db_user)

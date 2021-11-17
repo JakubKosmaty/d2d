@@ -2,7 +2,7 @@ import { getRepository } from 'typeorm';
 import { Category } from './entity/category';
 import { User } from './entity/user';
 import { Item } from './entity/item';
-import bcryptjs from 'bcryptjs';
+// import bcryptjs from 'bcryptjs';
 
 const createExampleData = async () => {
     // const user = new User();

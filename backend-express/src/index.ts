@@ -6,8 +6,11 @@ import logging from './config/logging';
 import config from './config/config';
 import userRoutes from './routes/user';
 import categoryRoutes from './routes/category';
+import orderRoutes from './routes/order';
 import { createConnection } from 'typeorm';
 import createExampleData from './exampleData';
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsDoc from 'swagger-jsdoc';
 
 const NAMESPACE = 'Server';
 const app = express();
@@ -16,6 +19,19 @@ createConnection();
 // setTimeout(() => {
 //     createExampleData();
 // }, 1000);
+
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            title: 'Library API',
+            version: '1.0.0'
+        }
+    },
+    apis: ['index.ts']
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use((req, res, next) => {
     logging.info(NAMESPACE, `METHOD: [${req.method}] - URL: [${req.url}] - IP: [${req.socket.remoteAddress}]`);
@@ -44,9 +60,10 @@ app.use((req, res, next) => {
 
 app.use('/users', userRoutes);
 app.use('/categories', categoryRoutes);
+app.use('/orders', orderRoutes);
 
 app.use((req, res, next) => res.status(404).json({ message: 'Not found' }));
 
 const httpServer = http.createServer(app);
 
-httpServer.listen(config.server.port, () => logging.info(NAMESPACE, `Server is running ${config.server.host}:${config.server.port}`));
+httpServer.listen(config.port, () => logging.info(NAMESPACE, `Server is running on port: ${config.port}`));

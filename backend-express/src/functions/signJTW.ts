@@ -10,9 +10,10 @@ const signJWT = (user: User, callback: (error: Error | null, token: string | nul
 
     jwt.sign(
         {
+            id: user.id,
             email: user.email
         },
-        config.server.jwtSecret,
+        config.jwtSecret,
         {
             algorithm: 'HS256'
         },
