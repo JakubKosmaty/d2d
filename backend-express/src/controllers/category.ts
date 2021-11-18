@@ -4,9 +4,6 @@ import { getRepository } from 'typeorm';
 import { Category } from '../entity/category';
 
 const NAMESPACE = 'Category';
-// /orders/me
-// /users/me/orders
-// /categories
 
 const getAllCategories = async (req: Request, res: Response, next: NextFunction) => {
     logging.info(NAMESPACE, 'getAllCategories.');

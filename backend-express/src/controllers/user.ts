@@ -1,21 +1,17 @@
 import { NextFunction, Request, Response } from 'express';
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 import logging from '../config/logging';
 import { getRepository } from 'typeorm';
 import { User } from '../entity/user';
 import signJWT from '../functions/signJTW';
 import { Order } from '../entity/order';
-import { use } from '../routes/user';
 
 const NAMESPACE = 'User';
-// /orders/me
-// /users/me/orders
-// /categories
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
     const { name, password, email } = req.body;
 
-    const hash = await bcrypt.hash(password, 10);
+    const hash = await bcryptjs.hash(password, 10);
 
     const user = new User();
     user.name = name;
@@ -37,7 +33,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
         });
     }
 
-    const match = await bcrypt.compare(password, dbUser.password);
+    const match = await bcryptjs.compare(password, dbUser.password);
 
     if (!match) {
         return res.status(401).json({
@@ -62,8 +58,6 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
 
 const getUserOrders = async (req: Request, res: Response, next: NextFunction) => {
     const userID = res.locals.jwt.id;
-
-    // const orders = await getRepository(Order).find({ relations: ['user'], where: { userId: userID } });
 
     // prettier-ignore
     const orders = await getRepository(Order)

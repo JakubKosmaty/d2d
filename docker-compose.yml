@@ -11,6 +11,8 @@ services:
     command: ["node", "./build/index.js"]
     ports:
       - "9000:9000"
+    depends_on:
+      - "db"
   db:
     image: mysql:latest
     ports:

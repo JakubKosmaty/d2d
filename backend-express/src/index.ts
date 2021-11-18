@@ -7,37 +7,22 @@ import config from './config/config';
 import userRoutes from './routes/user';
 import categoryRoutes from './routes/category';
 import orderRoutes from './routes/order';
+import itemRoutes from './routes/item';
 import { createConnection } from 'typeorm';
 import createExampleData from './exampleData';
-import swaggerUi from 'swagger-ui-express';
-import swaggerJsDoc from 'swagger-jsdoc';
 
 const NAMESPACE = 'Server';
 const app = express();
-createConnection();
 
-// setTimeout(() => {
-//     createExampleData();
-// }, 1000);
-
-const swaggerOptions = {
-    swaggerDefinition: {
-        info: {
-            title: 'Library API',
-            version: '1.0.0'
-        }
-    },
-    apis: ['index.ts']
-};
-
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+createConnection().then((resp) => {
+    createExampleData();
+});
 
 app.use((req, res, next) => {
-    logging.info(NAMESPACE, `METHOD: [${req.method}] - URL: [${req.url}] - IP: [${req.socket.remoteAddress}]`);
+    logging.info(NAMESPACE, `METHOD: [${req.method}] - URL: [${req.url}]`);
 
     res.on('finish', () => {
-        logging.info(NAMESPACE, `METHOD: [${req.method}] - URL: [${req.url}] - STATUS: [${res.statusCode}] - IP: [${req.socket.remoteAddress}]`);
+        logging.info(NAMESPACE, `METHOD: [${req.method}] - URL: [${req.url}] - STATUS: [${res.statusCode}]`);
     });
 
     next();
@@ -61,6 +46,7 @@ app.use((req, res, next) => {
 app.use('/users', userRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/orders', orderRoutes);
+app.use('/items', itemRoutes);
 
 app.use((req, res, next) => res.status(404).json({ message: 'Not found' }));
 

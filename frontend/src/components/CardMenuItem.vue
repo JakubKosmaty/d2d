@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <q-img :src="itemInfo.image_url" height="250px" width="100%" />
+    <q-img :src="itemInfo.imageUrl" height="250px" width="100%" />
 
     <q-card-section>
       <div class="row no-wrap items-center">

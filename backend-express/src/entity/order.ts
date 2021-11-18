@@ -7,8 +7,8 @@ export class Order {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    date: string;
+    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    date: Date;
 
     @Column()
     phone: string;
