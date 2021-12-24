@@ -9,32 +9,24 @@ const getters = {};
 
 const actions = {
   login({commit}, user) {
-    return AuthService.login(user).then(
-      user => {
-        commit('loginSuccess', user);
-        return Promise.resolve(user);
-      },
-      error => {
-        commit('loginFailure');
-        return Promise.reject(error);
-      }
-    );
+
+    const user_test = {
+      id: 1,
+      name: "Jan Kowalski",
+      email: "jan.kowalski@example.com",
+      access_token: "TEST",
+    };
+
+    commit('loginSuccess', user_test);
+    return user;
   },
   logout({commit}) {
     AuthService.logout();
     commit('logout');
   },
   register({commit}, user) {
-    return AuthService.register(user).then(
-      response => {
-        commit('registerSuccess');
-        return Promise.resolve(response.data);
-      },
-      error => {
-        commit('registerFailure');
-        return Promise.reject(error);
-      }
-    );
+    commit('registerSuccess');
+    return user;
   }
 };
 

@@ -124,12 +124,9 @@ export default {
         items: itemsArray
       };
 
-      const res = await axios.post(process.env.VUE_APP_API_URL + '/orders/me', payload, {headers: authHeader()});
+      store.commit('cart/clearCart');
+      await router.push({name: 'profile'});
 
-      if (res.status === 200) {
-        store.commit('cart/clearCart');
-        await router.push({name: 'profile'});
-      }
     };
 
     return {

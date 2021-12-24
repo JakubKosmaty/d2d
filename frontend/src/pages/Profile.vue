@@ -85,13 +85,18 @@ export default {
       router.push({name: 'login'});
     }
 
-    const userOrdersHistory = ref([]);
-
-    axios
-        .get(process.env.VUE_APP_API_URL + '/users/me/orders', {headers: authHeader()})
-        .then((res) => {
-          userOrdersHistory.value = res.data;
-        });
+    const userOrdersHistory = [
+    {
+      date: '12.21.2021',
+      phone: '123-123-123',
+      address: 'UJ Kraków',
+    },
+    {
+      date: '12.21.2030',
+      phone: '423-223-123',
+      address: 'AGH Kraków',
+    }
+  ]
 
     return {user, userOrdersHistory};
   },

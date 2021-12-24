@@ -87,18 +87,8 @@ export default {
         return;
       }
 
-      store.dispatch('auth/register', {
-        name: name.value,
-        email: email.value,
-        password: password.value
-      }).then(
-          () => {
-            router.push({name: 'login'});
-          },
-          (error) => {
-            console.log(error);
-          }
-      );
+      store.dispatch('auth/register', {});
+      router.push({name: 'login'});
     };
 
     const routeToRegister = () => router.push({name: 'register'});

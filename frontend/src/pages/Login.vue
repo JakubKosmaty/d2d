@@ -62,17 +62,8 @@ export default {
     const router = useRouter();
 
     const onSubmit = () => {
-      store.dispatch('auth/login', {
-        email: email.value,
-        password: password.value
-      }).then(
-          () => {
-            router.push({name: 'profile'});
-          },
-          (error) => {
-            console.log(error);
-          }
-      );
+      store.dispatch('auth/login', {});
+      router.push({name: 'profile'});
     };
 
     const routeToRegister = () => router.push({name: 'register'});
