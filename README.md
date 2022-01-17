@@ -28,4 +28,4 @@
     ```
 4. Open browser
 	- Frontend - http://localhost
-	- Swagger Api - http://localhost:9000/docs  
+	- Swagger Api - http://localhost:9000/docs 
