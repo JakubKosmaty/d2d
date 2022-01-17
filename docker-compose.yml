@@ -5,3 +5,4 @@ services:
     command: ["http-server", "dist", "--port", "80"]
     ports:
       - "80:80"
+
