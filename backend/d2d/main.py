@@ -7,6 +7,7 @@ from d2d.routers import categories
 from d2d.routers import items
 from d2d.routers import orders
 from d2d.routers import users
+from d2d.routers import codes
 from d2d.settings import settings
 
 app = FastAPI(title=settings.PROJECT_NAME)
@@ -24,6 +25,7 @@ app.include_router(auth.router)
 app.include_router(categories.router)
 app.include_router(items.router)
 app.include_router(orders.router)
+app.include_router(codes.router)
 
 
 @app.on_event("startup")

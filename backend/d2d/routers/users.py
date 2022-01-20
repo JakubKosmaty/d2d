@@ -2,6 +2,9 @@ from typing import List
 
 from fastapi import APIRouter
 from fastapi import Depends
+from fastapi import status
+from fastapi import File
+from fastapi import UploadFile
 from sqlmodel import Session, select
 
 from d2d.database import get_session
@@ -14,7 +17,7 @@ from d2d.routers.auth import get_password_hash, get_current_user
 router = APIRouter(tags=["Users"])
 
 
-@router.post("/users/", response_model=UserRead)
+@router.post("/users/", response_model=UserRead, status_code=status.HTTP_201_CREATED)
 def create_user(*, session: Session = Depends(get_session), user: UserCreate):
     user.password = get_password_hash(user.password)
     db_user = User.from_orm(user)
@@ -37,8 +40,17 @@ def get_current_user_orders(
         *,
         session: Session = Depends(get_session),
         user: User = Depends(get_current_user)):
-
     statement = select(Order).where(Order.user_id == user.id)
     orders_list = session.exec(statement).all()
 
     return orders_list
+
+
+@router.post("/users/me/avatar")
+async def upload_user_avatar(
+        *,
+        session: Session = Depends(get_session),
+        file: UploadFile = File(...)):
+    contents = await file.read()
+
+    return {'ok': contents}
