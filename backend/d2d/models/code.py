@@ -9,7 +9,7 @@ from sqlmodel import SQLModel
 
 class CodeBase(SQLModel):
     code: str
-    discount: float
+    discount: int
 
 
 class CodeCreate(CodeBase):

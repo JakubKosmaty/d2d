@@ -12,7 +12,7 @@
           <q-card-section>
             <q-splitter v-model="splitterModel" style="height: auto">
               <template v-slot:before>
-                <q-tabs v-model="tab" class="text-teal" vertical>
+                <q-tabs v-model="tab" class="text-blue" vertical>
                   <q-tab
                       v-for="category in categories"
                       :key="category.id"

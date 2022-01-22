@@ -1,8 +1,8 @@
 <template>
-  <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
+  <q-img class="absolute-top" src="./material.png" style="height: 150px">
     <div class="absolute-bottom bg-transparent">
       <div v-if="user">
-        <q-avatar class="q-mb-sm" color="teal" icon="person" size="45px" />
+<!--        <q-avatar class="q-mb-sm" color="#5788de" icon="person" size="45px" />-->
         <div class="text-weight-bold">{{ user.name }}</div>
         <div>{{ user.email }}</div>
       </div>
@@ -104,6 +104,6 @@ export default {
 <style>
 .menu-active {
   color: white;
-  background: #F2C037;
+  background: #5788de;
 }
 </style>

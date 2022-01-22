@@ -51,6 +51,7 @@
 import { ref } from 'vue';
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
 
 export default {
   name: "Login",
@@ -61,16 +62,27 @@ export default {
     const store = useStore();
     const router = useRouter();
 
+    const $q = useQuasar()
+
     const onSubmit = () => {
       store.dispatch('auth/login', {
         email: email.value,
         password: password.value
       }).then(
           () => {
+            $q.notify({
+              type: 'positive',
+              message: 'Login Successful',
+              position: 'bottom-right'
+            })
             router.push({name: 'profile'});
           },
           (error) => {
-            console.log(error);
+            $q.notify({
+              type: 'negative',
+              message: 'Invalid Data',
+              position: 'bottom-right'
+            })
           }
       );
     };

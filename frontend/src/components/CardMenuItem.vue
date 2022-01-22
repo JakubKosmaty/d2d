@@ -26,6 +26,7 @@
 
 <script>
 import { useStore } from "vuex";
+import { useQuasar } from "quasar";
 
 export default {
   name: 'CardMenuItem',
@@ -33,8 +34,26 @@ export default {
   setup() {
     const store = useStore();
 
-    const addItemToCart = (item) => store.commit('cart/addItemToCart', item);
-    const removeItemFromCart = (item) => store.commit('cart/removeItemFromCart', item);
+    const $q = useQuasar()
+
+    const addItemToCart = (item) => {
+      store.commit('cart/addItemToCart', item);
+
+      $q.notify({
+        type: 'positive',
+        message: `${item.name} added to cart`,
+        position: 'bottom-right'
+      })
+    }
+    const removeItemFromCart = (item) => {
+      store.commit('cart/removeItemFromCart', item);
+
+      $q.notify({
+        type: 'info',
+        message: `${item.name} removed from cart`,
+        position: 'bottom-right'
+      })
+    }
 
     return {
       addItemToCart,

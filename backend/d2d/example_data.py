@@ -6,6 +6,8 @@ from d2d.models.category import CategoryCreate
 from d2d.models.item import Item
 from d2d.models.user import User
 from d2d.models.user import UserCreate
+from d2d.models.code import CodeCreate
+from d2d.models.code import Code
 from d2d.routers.auth import get_password_hash
 
 
@@ -44,5 +46,9 @@ def create_example_data():
 
         db_item = Item(name="Fruits", price=2.0, category_id=3, image_url='https://ellalanguage.com/blog/wp-content/uploads/2021/12/fruit_czy_fruits_blogT-740x499.jpg')
         session.add(db_item)
+
+        code = Code(code='STYCZEN15', discount=15)
+        db_code = Code.from_orm(code)
+        session.add(db_code)
 
         session.commit()

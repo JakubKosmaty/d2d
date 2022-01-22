@@ -69,6 +69,7 @@
 import { ref } from 'vue';
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
 
 export default {
   name: "Register",
@@ -82,6 +83,8 @@ export default {
     const store = useStore();
     const router = useRouter();
 
+    const $q = useQuasar()
+
     const onSubmit = () => {
       if (password.value !== confirmPassword.value) {
         return;
@@ -93,10 +96,20 @@ export default {
         password: password.value
       }).then(
           () => {
+            $q.notify({
+              type: 'positive',
+              message: 'Successfully Register',
+              position: 'bottom-right'
+            })
+
             router.push({name: 'login'});
           },
           (error) => {
-            console.log(error);
+            $q.notify({
+              type: 'negative',
+              message: 'Invalid Data',
+              position: 'bottom-right'
+            })
           }
       );
     };

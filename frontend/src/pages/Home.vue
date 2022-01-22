@@ -3,64 +3,99 @@
     <div class="row justify-center q-pa-lg">
       <div class="col-12">
         <q-card>
+        <img style="height:30%; float: top; position: absolute; max-height: 500px" src="./menu-bg.png">
           <q-card-section>
-            <div class="text-h4 text-weight-medium">Welcome Page</div>
+            <div class="text-h1 text-weight-medium"><img style="position: relative; margin-left: auto; margin-right:auto; display: block; margin-top: 7%; margin-bottom: 7%" src="./logo.png"></div>
           </q-card-section>
-
-          <q-card-section class="q-pt-none">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed tempor metus, vel vulputate orci. Fusce
-            magna ipsum, ornare eget quam at, iaculis facilisis erat. Curabitur porta, lectus vel facilisis lobortis,
-            dui libero auctor mi, at placerat arcu augue eu metus. Cras aliquam nec lacus quis luctus. Ut at enim quis
-            velit tincidunt viverra nec quis justo. Sed dictum augue sit amet purus pharetra, at accumsan diam molestie.
-            Nunc sed erat id est dignissim euismod tempus vitae ante.
+            
+          <q-card-section class="q-pt-none text-h6 text-center">
+          
+            Witaj na stronie D2D!
 
             <br />
             <br />
 
-            Vivamus consectetur ut odio sit amet placerat. Pellentesque ullamcorper blandit urna a dictum. Aenean
-            porttitor vehicula nunc vel maximus. Quisque non lacus et velit auctor fermentum non nec elit. Aenean
-            facilisis fermentum enim eu volutpat. Proin felis massa, dignissim vitae lacinia eget, rutrum vitae elit.
-            Fusce gravida libero lobortis felis semper rutrum. Pellentesque augue magna, rutrum in pellentesque non,
-            tincidunt sit amet ligula. Proin et consectetur ligula. Donec varius tempus lectus, eu tristique magna
-            vulputate in. Duis faucibus justo id urna vulputate, nec mollis ipsum pellentesque. Vivamus placerat in nisl
-            vel gravida. Fusce cursus, erat gravida pharetra aliquam, odio lacus viverra nisl, egestas semper justo erat
-            et leo. Mauris blandit enim ut nunc congue sagittis. Vivamus turpis urna, dictum eu sagittis sed, tempus
-            vestibulum nulla. Donec dignissim erat ligula, ut auctor libero euismod sed.
+            Twoja restauracja. Twój biznes. Twoje zamówienia online
+            Zwiększ sprzedaż uruchamiając zamówienia online w swojej restauracji! D2D pozwala sprzedawać jedzenie online bezpośrednio ze swojej strony internetowej. Dzięki temu zmniejszasz koszty
+            oraz zyskujesz pełną kontrolę nad zamówieniami i klientami. Aktualizuj menu w czasie rzeczywistym. Bez wiedzy technicznej, pomocy informatyków czy portali.
+            Zmiany są natychmiast widoczne dla Twoich klientów na wszystkich urządzeniach.
+
+            <br />
+            <br />
+            <br />
+            Miasta, w których operuje D2D:
+            <br />
+
+            <div class="q-pa-xl full-width row items-start q-gutter-xl justify-center">
+
+              <q-card class="my-card">
+                <q-img src="https://www.polska.travel/images/pl-PL/glowne-miasta/krakow/krakow_rynek_2_1170.jpg">
+                <div class="absolute-bottom text-subtitle2 text-center">
+                Kraków
+                </div>
+                </q-img>
+              </q-card> 
+
+              <q-card class="my-card">
+                <q-img src="https://warsawtour.pl/wp-content/uploads/2018/07/Centrum-fot.-Zbigniew-Pan%C3%B3w-pzstudio.pl_.jpg">
+                <div class="absolute-bottom text-subtitle2 text-center">
+                Warszawa
+                </div>
+                </q-img>
+              </q-card>
+
+              <q-card class="my-card">
+                <q-img src="https://www.polska.travel/images/pl-PL/glowne-miasta/poznan/poznan_stare_miasto_2_1170.jpg">
+                <div class="absolute-bottom text-subtitle2 text-center">
+                Poznań
+                </div>
+                </q-img>
+              </q-card>
+
+              <q-card class="my-card">
+                <q-img src="https://galeria.bankier.pl/p/2/2/e340cee2b50833-948-568-0-8-1730-1037.jpg">
+                <div class="absolute-bottom text-subtitle2 text-center">
+                Łódź
+                </div>
+                </q-img>
+              </q-card>
+
+              <q-card class="my-card">
+                <q-img src="https://static.polityka.pl/_resource/res/path/46/c2/46c2ccf1-4f6d-42bd-a8d6-012c2adaea6e_f1400x900">
+                <div class="absolute-bottom text-subtitle2 text-center">
+                Toruń
+                </div>
+                </q-img>
+              </q-card>
+
+              <q-card class="my-card">
+                <q-img src="https://www.worldisbeautiful.eu/up_files/2091-Gdynia-noca.jpg">
+                <div class="absolute-bottom text-subtitle2 text-center">
+                Gdynia
+                </div>
+                </q-img>
+              </q-card>
+
+            </div>
 
             <br />
             <br />
 
-            Nulla vulputate volutpat massa posuere vehicula. Morbi interdum, nibh ut sodales pulvinar, augue ipsum
-            hendrerit urna, ultrices aliquam velit nibh in arcu. Ut efficitur, ex at suscipit faucibus, velit magna
-            facilisis sapien, ac iaculis lorem nibh non tellus. Sed at eros molestie, accumsan arcu sit amet,
-            pellentesque odio. Nam finibus nibh non lobortis sodales. Suspendisse quis nibh lacus. Phasellus vestibulum
-            sed orci ornare mollis. Praesent a sodales eros, et rutrum neque. Donec pharetra purus ac convallis
-            condimentum. Fusce lobortis faucibus tincidunt. Nam non interdum nulla, at dapibus nibh. Orci varius natoque
-            penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam odio dui, scelerisque et nibh
-            rhoncus, vestibulum auctor tellus. Curabitur ut arcu ligula. Nullam dictum mollis fringilla.
+            D2D pozwala przyjmować od klientów płatności internetowe. Wybiera je już ponad 30% klientów restauracji ze względu na ich szybkość i wygodę.
+            Większa wygoda dla Twoich klientów to więcej zamówień w Twojej restauracji. Zamówieniami online w restauracjach zajmujemy się od 10 lat. Sprzedaż online w Twoim lokalu możemy uruchomić nawet w 1 dzień.
 
             <br />
             <br />
-
-            In condimentum ante vitae fringilla iaculis. Nam bibendum in ligula gravida feugiat. Etiam viverra vehicula
-            porta. Pellentesque neque tortor, blandit in congue quis, placerat non elit. Integer placerat posuere neque
-            quis consequat. Phasellus sem felis, tristique id volutpat vel, ultricies nec nisi. Pellentesque posuere
-            purus ac massa semper vehicula. Pellentesque varius felis tellus. Duis sit amet ipsum arcu. Morbi ac nunc
-            iaculis, hendrerit turpis fringilla, fermentum nibh. Morbi quam est, blandit at tellus in, suscipit
-            ultricies lorem. Vestibulum eleifend egestas elit, a euismod magna tristique vitae. Maecenas lobortis
-            tincidunt sapien sit amet suscipit. Integer sit amet volutpat nulla.
-
             <br />
             <br />
 
-            Nulla lacinia nulla leo, ac venenatis sapien bibendum in. Etiam ut porttitor tellus, ut eleifend magna.
-            Aenean condimentum sapien vitae ipsum mollis posuere. Praesent magna nunc, tempus a cursus a, consequat ac
-            ex. Nullam sollicitudin massa dapibus, pulvinar nulla eu, mollis sem. Aenean vestibulum sollicitudin
-            egestas. Nulla in tristique ipsum. Suspendisse feugiat iaculis justo, quis eleifend quam vulputate sed.
-            Proin ac malesuada lacus. Vivamus urna felis, placerat ut justo a, scelerisque cursus lacus. Fusce volutpat
-            dolor nec faucibus finibus. Nunc sit amet ex felis. Etiam consequat mauris a risus sagittis, ut sodales mi
-            posuere. Maecenas semper placerat nisi suscipit vulputate. Aliquam id semper massa, at rhoncus massa. Duis
-            tempor pretium dui et elementum.
+            <q-card-section class="q-pt-none text-h3 text-center">
+            Na co czekasz? 
+            <br />
+            Uruchom zamówienia online w swojej restauracji!
+            </q-card-section>
+
+            
           </q-card-section>
         </q-card>
       </div>
@@ -76,3 +111,10 @@ export default {
   }
 };
 </script>
+
+<style lang="sass" scoped>
+.my-card
+  width: 100%
+  max-width: 400px
+</style>
+
