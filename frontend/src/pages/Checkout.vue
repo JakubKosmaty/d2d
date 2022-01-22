@@ -7,7 +7,7 @@
             <div class="text-h4 text-weight-medium">Delivery details</div>
           </q-card-section>
 
-          <q-separator inset />
+          <q-separator inset/>
 
 
           <q-card-section>
@@ -15,26 +15,26 @@
 
             <q-input v-model="user.name" class="q-ma-md" disable prefix="Name:">
               <template v-slot:prepend>
-                <q-icon name="account_circle" />
+                <q-icon name="account_circle"/>
               </template>
             </q-input>
 
 
             <q-input v-model="user.email" class="q-ma-md" disable prefix="Email:">
               <template v-slot:prepend>
-                <q-icon name="mail" />
+                <q-icon name="mail"/>
               </template>
             </q-input>
 
             <q-input v-model="address" class="q-ma-md" prefix="Address:">
               <template v-slot:prepend>
-                <q-icon name="apartment" />
+                <q-icon name="apartment"/>
               </template>
             </q-input>
 
             <q-input v-model="phone" class="q-ma-md" fill-mask mask="(##) ### - ### - ###" prefix="Phone:">
               <template v-slot:prepend>
-                <q-icon name="smartphone" />
+                <q-icon name="smartphone"/>
               </template>
             </q-input>
 
@@ -48,7 +48,7 @@
             <div class="text-h4 text-weight-medium">Order details</div>
           </q-card-section>
 
-          <q-separator inset />
+          <q-separator inset/>
 
           <q-list bordered padding>
             <q-item-label header>Products</q-item-label>
@@ -67,10 +67,17 @@
 
             </q-item>
 
-            <q-separator spaced />
+            <q-separator spaced/>
             <q-item-label class="text-weight-bold" header>Sum: {{ totalPrice }}$</q-item-label>
 
           </q-list>
+
+          <q-input class="q-ma-md" v-model="discCode" label="Discount Code" :dense="dense">
+
+            <template v-slot:after>
+              <q-btn round dense flat icon="add" @click="onDiscCode"/>
+            </template>
+          </q-input>
 
           <q-card-actions align="center" vertical>
             <q-btn class="full-width" color="purple" @click="onOrder">Order</q-btn>
@@ -87,6 +94,7 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import axios from 'axios';
 import authHeader from "@/services/auth-header";
+import { useQuasar } from "quasar";
 
 export default {
   name: "Checkout",
@@ -97,19 +105,46 @@ export default {
     const address = ref(null);
     const phone = ref(null);
 
+    const discCode = ref(null);
+
     const user = computed(() => store.state.auth.user);
     const cart = computed(() => store.state.cart.cartItems);
 
-    const totalPrice = computed(() => {
-      let tempPrice = 0;
-      for (let item of cart.value) {
-        tempPrice += item.quantity * item.price;
-      }
-      return tempPrice.toFixed(2);
-    });
+    const $q = useQuasar()
+
+    const totalPrice = ref('0');
 
     if (!user.value) {
       router.push({name: 'login'});
+    }
+
+    let tempPrice = 0;
+    for (let item of cart.value) {
+      tempPrice += item.quantity * item.price;
+    }
+
+    totalPrice.value = tempPrice.toFixed(2);
+
+    const onDiscCode = async () => {
+      console.log(discCode.value)
+      try {
+        const res = await axios.post(process.env.VUE_APP_API_URL + '/codes/' + discCode.value);
+        if (res.status === 200) {
+          totalPrice.value -= res.data['discount']
+
+          $q.notify({
+            type: 'positive',
+            message: 'Promo code has been successfully added',
+            position: 'bottom-right'
+          })
+        }
+      } catch (e) {
+        $q.notify({
+          type: 'negative',
+          message: 'Invalid Code',
+          position: 'bottom-right'
+        })
+      }
     }
 
     const onOrder = async () => {
@@ -124,11 +159,22 @@ export default {
         items: itemsArray
       };
 
-      const res = await axios.post(process.env.VUE_APP_API_URL + '/orders/me', payload, {headers: authHeader()});
-
-      if (res.status === 200) {
+      try {
+        const res = await axios.post(process.env.VUE_APP_API_URL + '/orders/me', payload, {headers: authHeader()});
         store.commit('cart/clearCart');
+
+        $q.notify({
+          type: 'positive',
+          message: 'Order was placed successfully',
+          position: 'bottom-right'
+        })
         await router.push({name: 'profile'});
+      } catch (e) {
+        $q.notify({
+          type: 'negative',
+          message: 'Invalid Data',
+          position: 'bottom-right'
+        })
       }
     };
 
@@ -138,7 +184,9 @@ export default {
       totalPrice,
       address,
       phone,
-      onOrder
+      onOrder,
+      onDiscCode,
+      discCode
     };
   },
 };
