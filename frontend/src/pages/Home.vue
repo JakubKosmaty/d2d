@@ -10,89 +10,67 @@
             
           <q-card-section class="q-pt-none text-h6 text-center">
           
-            Witaj na stronie D2D!
+            Witaj na stronie naszej restauracji!
 
             <br />
             <br />
 
-            Twoja restauracja. Twój biznes. Twoje zamówienia online
-            Zwiększ sprzedaż uruchamiając zamówienia online w swojej restauracji! D2D pozwala sprzedawać jedzenie online bezpośrednio ze swojej strony internetowej. Dzięki temu zmniejszasz koszty
-            oraz zyskujesz pełną kontrolę nad zamówieniami i klientami. Aktualizuj menu w czasie rzeczywistym. Bez wiedzy technicznej, pomocy informatyków czy portali.
-            Zmiany są natychmiast widoczne dla Twoich klientów na wszystkich urządzeniach.
+            Poznajmy się bliżej
+            Restauracja istnieje nieprzerwanie od 2002 roku. Swoją ofertę kierujemy do wszystkich klientów znajdujących się w naszej najbliższej okolicy.
+
+            Naszą kuchnię tworzymy z myślą o wszystkich, którzy cenią sobie czas, różnorodne smaki oraz nowe doświadczenia. Wszystkie potrawy przygotowywane są bezpośrednio przez nas, z samych naturalnych i najlepszych składników. Nie używamy polepszaczy smaku ani konserwantów, co czyni niepowtarzalny i niezapomniany smak serwowanych przez nas dań.
+
+            Codziennie serwujemy sycące śniadania, obiady firmowe, zestawy tygodniowe oraz szeroki wachlarz dań z karty. Do każdej z wymienionych wyżej propozycji polecamy wyborne desery, a jest w czym wybierać! Oferujemy świeżo wyciskane soki, smoothies oraz różnorodne owocowe szejki.
+
+            Pracujemy ciężko całym zespołem na uznanie naszych klientów.
+
+            Zamów z dostawą
+            Ciesz się naszym pysznym obiadem w domu i w biurze dzięki prostej i szybkiej możliwości zamówień z dostawą. Zamów już teraz, będziemy do 90 minut.
 
             <br />
             <br />
+
             <br />
-            Miasta, w których operuje D2D:
-            <br />
+            Galeria:
 
             <div class="q-pa-xl full-width row items-start q-gutter-xl justify-center">
 
               <q-card class="my-card">
-                <q-img src="https://www.polska.travel/images/pl-PL/glowne-miasta/krakow/krakow_rynek_2_1170.jpg">
-                <div class="absolute-bottom text-subtitle2 text-center">
-                Kraków
-                </div>
+                <q-img src="https://s-trojmiasto.pl/zdj/c/n/9/2194/1500x0/2194680-Restauracja-Crudo-znajduje-sie-w-centrum-Sopotu.jpg">
                 </q-img>
               </q-card> 
 
               <q-card class="my-card">
-                <q-img src="https://warsawtour.pl/wp-content/uploads/2018/07/Centrum-fot.-Zbigniew-Pan%C3%B3w-pzstudio.pl_.jpg">
-                <div class="absolute-bottom text-subtitle2 text-center">
-                Warszawa
-                </div>
+                <q-img src="https://s-trojmiasto.pl/zdj/c/n/9/2194/1500x0/2194681.jpg">
                 </q-img>
               </q-card>
 
               <q-card class="my-card">
-                <q-img src="https://www.polska.travel/images/pl-PL/glowne-miasta/poznan/poznan_stare_miasto_2_1170.jpg">
-                <div class="absolute-bottom text-subtitle2 text-center">
-                Poznań
-                </div>
+                <q-img src="https://s-trojmiasto.pl/zdj/c/n/9/2194/1500x0/2194682.jpg">
                 </q-img>
               </q-card>
 
               <q-card class="my-card">
-                <q-img src="https://galeria.bankier.pl/p/2/2/e340cee2b50833-948-568-0-8-1730-1037.jpg">
-                <div class="absolute-bottom text-subtitle2 text-center">
-                Łódź
-                </div>
+                <q-img src="https://s-trojmiasto.pl/zdj/c/n/9/2195/3000x0/2195277-Ciekawie-prezentuje-sie-ogrod-zimowy-w-restauracji-Cider-Garden-Papieroovka.jpg">
                 </q-img>
               </q-card>
 
               <q-card class="my-card">
-                <q-img src="https://static.polityka.pl/_resource/res/path/46/c2/46c2ccf1-4f6d-42bd-a8d6-012c2adaea6e_f1400x900">
-                <div class="absolute-bottom text-subtitle2 text-center">
-                Toruń
-                </div>
+                <q-img src="https://s-trojmiasto.pl/zdj/c/n/9/2194/3000x0/2194673.jpg">
                 </q-img>
               </q-card>
 
               <q-card class="my-card">
-                <q-img src="https://www.worldisbeautiful.eu/up_files/2091-Gdynia-noca.jpg">
-                <div class="absolute-bottom text-subtitle2 text-center">
-                Gdynia
-                </div>
+                <q-img src="https://s-trojmiasto.pl/zdj/c/n/9/2194/3000x0/2194674.jpg">
                 </q-img>
               </q-card>
 
             </div>
 
-            <br />
-            <br />
-
-            D2D pozwala przyjmować od klientów płatności internetowe. Wybiera je już ponad 30% klientów restauracji ze względu na ich szybkość i wygodę.
-            Większa wygoda dla Twoich klientów to więcej zamówień w Twojej restauracji. Zamówieniami online w restauracjach zajmujemy się od 10 lat. Sprzedaż online w Twoim lokalu możemy uruchomić nawet w 1 dzień.
-
-            <br />
-            <br />
-            <br />
-            <br />
-
             <q-card-section class="q-pt-none text-h3 text-center">
-            Na co czekasz? 
-            <br />
-            Uruchom zamówienia online w swojej restauracji!
+              Na co czekasz?
+              <br />
+              Zamów teraz!
             </q-card-section>
 
             
